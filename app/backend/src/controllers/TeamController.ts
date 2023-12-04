@@ -12,4 +12,12 @@ export default class TeamController {
 
     res.status(mapStatusHTTP(status)).json(data);
   }
+
+  async findById(req:Request, res: Response) {
+    const { id } = req.params;
+
+    const { status, data } = await this.teamService.findById(Number(id));
+
+    res.status(mapStatusHTTP(status)).json(data);
+  }
 }
