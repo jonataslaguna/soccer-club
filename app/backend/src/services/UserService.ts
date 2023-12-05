@@ -14,14 +14,12 @@ export default class UserService {
 
   async login({ email, password }: ILogin): Promise<ServiceResponse<ServiceMessage | IToken>> {
     const user = await this.userModel.findByEmail(email);
-    if (user) {
-      if (!bcrypt.compareSync(password, user.password)) {
-        return { status: 'INVALID_DATA', data: { message: 'Invalid email or password' } };
-      }
 
-      const token = this.jwtService.sign({ email });
-      return { status: 'SUCCESSFUL', data: { token } };
+    if (!user || !bcrypt.compareSync(password, user.password)) {
+      return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
-    return { status: 'NOT_FOUND', data: { message: 'User not found' } };
+
+    const token = this.jwtService.sign({ email });
+    return { status: 'SUCCESSFUL', data: { token } };
   }
 }
