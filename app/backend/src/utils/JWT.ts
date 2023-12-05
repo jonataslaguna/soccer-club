@@ -1,5 +1,7 @@
 import { JwtPayload, Secret, sign, SignOptions, verify } from 'jsonwebtoken';
 
+export const extractToken = (bearerToken: string) => bearerToken.split(' ')[1];
+
 export default class JWT {
   private static secret: Secret = process.env.JWT_SECRET || '123456';
 

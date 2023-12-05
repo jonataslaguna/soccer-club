@@ -19,7 +19,12 @@ export default class UserService {
       return { status: 'UNAUTHORIZED', data: { message: 'Invalid email or password' } };
     }
 
-    const token = this.jwtService.sign({ email });
+    const payload = {
+      email,
+      role: user.role,
+    };
+
+    const token = this.jwtService.sign(payload);
     return { status: 'SUCCESSFUL', data: { token } };
   }
 }
