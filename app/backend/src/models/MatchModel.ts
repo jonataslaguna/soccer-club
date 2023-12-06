@@ -1,7 +1,6 @@
-import IMatchModel from '../Interfaces/Match/IMatchModel';
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import SequelizeTeam from '../database/models/SequelizeTeam';
-import IMatch from '../Interfaces/Match/IMatch';
+import { IMatch, IMatchModel } from '../Interfaces/Match';
 
 export default class MatchModel implements IMatchModel {
   private model = SequelizeMatch;

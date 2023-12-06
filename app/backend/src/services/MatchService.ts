@@ -1,7 +1,7 @@
 import MatchModel from '../models/MatchModel';
 import IMatchModel from '../Interfaces/Match/IMatchModel';
 import IMatch from '../Interfaces/Match/IMatch';
-import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import { ServiceResponse } from '../types/ServiceResponse';
 import IFinishMessage from '../Interfaces/Match/IFinishMessage';
 
 export default class MatchService {

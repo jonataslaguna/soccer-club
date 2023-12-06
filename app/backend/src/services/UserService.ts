@@ -1,9 +1,8 @@
 import * as bcrypt from 'bcryptjs';
-import IUserModel from '../Interfaces/User/IUserModel';
 import UserModel from '../models/UserModel';
-import { ServiceMessage, ServiceResponse } from '../Interfaces/ServiceResponse';
+import { ServiceMessage, ServiceResponse } from '../types/ServiceResponse';
 import { IToken } from '../Interfaces/IToken';
-import { ILogin } from '../Interfaces/User/ILogin';
+import { ILogin, IUserModel } from '../Interfaces/User';
 import JWT from '../utils/JWT';
 
 export default class UserService {
