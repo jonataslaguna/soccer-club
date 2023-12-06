@@ -12,4 +12,13 @@ export default class MatchController {
 
     res.status(mapStatusHTTP(status)).json(data);
   }
+
+  async getMatchesInProgress(req:Request, res: Response) {
+    const { inProgress } = req.query;
+
+    const matchStatus = inProgress === 'true';
+
+    const { status, data } = await this.matchService.getMatchesInProgress(matchStatus);
+    res.status(mapStatusHTTP(status)).json(data);
+  }
 }
