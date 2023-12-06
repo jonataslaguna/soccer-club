@@ -2,6 +2,7 @@ import MatchModel from '../models/MatchModel';
 import IMatchModel from '../Interfaces/Match/IMatchModel';
 import IMatch from '../Interfaces/Match/IMatch';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import IFinishMessage from '../Interfaces/Match/IFinishMessage';
 
 export default class MatchService {
   constructor(
@@ -18,5 +19,11 @@ export default class MatchService {
     const matchesInProgress = await this.matchModel.getMatchesInProgress(matchStatus);
 
     return { status: 'SUCCESSFUL', data: matchesInProgress };
+  }
+
+  async finishMatch(id: number): Promise<ServiceResponse<IFinishMessage>> {
+    await this.matchModel.finishMatch(id);
+
+    return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
   }
 }

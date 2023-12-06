@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import MatchController from '../controllers/MatchController';
+import Validations from '../middlewares/Validations';
 
 const matchController = new MatchController();
 
@@ -11,6 +12,12 @@ router.get(
     req.query.inProgress
       ? matchController.getMatchesInProgress(req, res)
       : matchController.findAll(req, res)),
+);
+
+router.patch(
+  '/:id/finish',
+  Validations.validateToken,
+  (req: Request, res: Response) => matchController.finishMatch(req, res),
 );
 
 export default router;
