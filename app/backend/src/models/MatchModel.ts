@@ -1,6 +1,6 @@
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import SequelizeTeam from '../database/models/SequelizeTeam';
-import { IMatch, IMatchModel } from '../Interfaces/Match';
+import { IMatch, IMatchModel, IUpdateMaches } from '../Interfaces/Match';
 
 export default class MatchModel implements IMatchModel {
   private model = SequelizeMatch;
@@ -32,5 +32,29 @@ export default class MatchModel implements IMatchModel {
       { inProgress: false },
       { where: { id } },
     );
+  }
+
+  async findById(id: number): Promise<IMatch | null> {
+    const match = await this.model.findOne({
+      where: { id },
+      include: [
+        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
+        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
+      ],
+    });
+
+    return match;
+  }
+
+  async updateMachesInProgress(teams: IUpdateMaches, id:number):Promise<IMatch | null> {
+    const { homeTeamGoals, awayTeamGoals } = teams;
+    await this.model.update(
+      { homeTeamGoals, awayTeamGoals },
+      { where: { id } },
+    );
+
+    const updatedMatch = await this.findById(id);
+
+    return updatedMatch;
   }
 }

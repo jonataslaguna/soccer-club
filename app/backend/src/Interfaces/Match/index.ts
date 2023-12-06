@@ -1,9 +1,11 @@
 import IMatch from './IMatch';
 import IMatchModel from './IMatchModel';
-import IFinishMessage from './IFinishMessage';
+import IMessage from './IMessage';
+import IUpdateMaches from './IUpdateMaches';
 
 export {
   IMatch,
   IMatchModel,
-  IFinishMessage,
+  IMessage,
+  IUpdateMaches,
 };

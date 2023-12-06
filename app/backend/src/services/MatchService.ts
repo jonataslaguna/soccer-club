@@ -1,8 +1,6 @@
 import MatchModel from '../models/MatchModel';
-import IMatchModel from '../Interfaces/Match/IMatchModel';
-import IMatch from '../Interfaces/Match/IMatch';
+import { IMatch, IMatchModel, IMessage, IUpdateMaches } from '../Interfaces/Match';
 import { ServiceResponse } from '../types/ServiceResponse';
-import IFinishMessage from '../Interfaces/Match/IFinishMessage';
 
 export default class MatchService {
   constructor(
@@ -21,9 +19,22 @@ export default class MatchService {
     return { status: 'SUCCESSFUL', data: matchesInProgress };
   }
 
-  async finishMatch(id: number): Promise<ServiceResponse<IFinishMessage>> {
+  async finishMatch(id: number): Promise<ServiceResponse<IMessage>> {
     await this.matchModel.finishMatch(id);
 
     return { status: 'SUCCESSFUL', data: { message: 'Finished' } };
+  }
+
+  async updateMachesInProgress(
+    teams: IUpdateMaches,
+    id:number,
+  ):Promise<ServiceResponse<IMatch | null>> {
+    const match = await this.matchModel.findById(id);
+
+    if (!match) return { status: 'NOT_FOUND', data: { message: 'Match not found' } };
+
+    const updatedMatch = await this.matchModel.updateMachesInProgress(teams, id);
+
+    return { status: 'SUCCESSFUL', data: updatedMatch };
   }
 }

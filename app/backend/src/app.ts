@@ -12,14 +12,18 @@ class App {
 
     this.config();
 
+    this.routes();
+
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
-
-    this.routes();
 
     // Não remova esse middleware de erro, mas fique a vontade para customizá-lo
     // Mantenha ele sempre como o último middleware a ser chamado
     this.app.use(errorMiddleware);
+  }
+
+  private routes(): void {
+    this.app.use(router);
   }
 
   private config():void {
@@ -32,10 +36,6 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
-  }
-
-  private routes(): void {
-    this.app.use(router);
   }
 
   public start(PORT: string | number): void {
