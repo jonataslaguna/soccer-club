@@ -1,5 +1,5 @@
 import MatchModel from '../models/MatchModel';
-import { IMatch, IMatchModel, IMessage, IUpdateMatchGoals } from '../Interfaces/Match';
+import { IMatch, IMatchModel, IMessage, INewMatch, IUpdateMatchGoals } from '../Interfaces/Match';
 import { ServiceResponse } from '../types/ServiceResponse';
 
 export default class MatchService {
@@ -36,5 +36,11 @@ export default class MatchService {
     const updatedMatch = await this.matchModel.updateMachesInProgress(teamGoals, id);
 
     return { status: 'SUCCESSFUL', data: updatedMatch };
+  }
+
+  async createMatch(match: INewMatch): Promise<ServiceResponse<IMatch>> {
+    const newMatch = await this.matchModel.createMatch(match);
+
+    return { status: 'CREATED', data: newMatch };
   }
 }
