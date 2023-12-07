@@ -1,6 +1,6 @@
 import SequelizeMatch from '../database/models/SequelizeMatch';
 import SequelizeTeam from '../database/models/SequelizeTeam';
-import { IMatch, IMatchModel, IUpdateMaches } from '../Interfaces/Match';
+import { IMatch, IMatchModel, IUpdateMatchGoals } from '../Interfaces/Match';
 
 export default class MatchModel implements IMatchModel {
   private model = SequelizeMatch;
@@ -46,7 +46,7 @@ export default class MatchModel implements IMatchModel {
     return match;
   }
 
-  async updateMachesInProgress(teams: IUpdateMaches, id:number):Promise<IMatch | null> {
+  async updateMachesInProgress(teams: IUpdateMatchGoals, id:number):Promise<IMatch | null> {
     const { homeTeamGoals, awayTeamGoals } = teams;
     await this.model.update(
       { homeTeamGoals, awayTeamGoals },

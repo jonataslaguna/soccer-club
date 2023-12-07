@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import JWT, { extractToken } from '../utils/JWT';
-import { ICustomRequest, IUserData } from '../Interfaces/User/IUserData';
+import { ICustomRequestUserDataToken, IUserDataToken } from '../Interfaces/User';
 
 class Validations {
   static validateLogin(req: Request, res: Response, next: NextFunction): Response | void {
@@ -19,7 +19,7 @@ class Validations {
     next();
   }
 
-  static async validateToken(req: ICustomRequest, res: Response, next: NextFunction):
+  static async validateToken(req: ICustomRequestUserDataToken, res: Response, next: NextFunction):
   Promise<Response | void> {
     const { authorization } = req.headers;
 
@@ -34,7 +34,7 @@ class Validations {
       return res.status(401).json({ message: validToken });
     }
 
-    req.userData = validToken as IUserData;
+    req.userData = validToken as IUserDataToken;
 
     next();
   }

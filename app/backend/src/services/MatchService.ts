@@ -1,5 +1,5 @@
 import MatchModel from '../models/MatchModel';
-import { IMatch, IMatchModel, IMessage, IUpdateMaches } from '../Interfaces/Match';
+import { IMatch, IMatchModel, IMessage, IUpdateMatchGoals } from '../Interfaces/Match';
 import { ServiceResponse } from '../types/ServiceResponse';
 
 export default class MatchService {
@@ -26,14 +26,14 @@ export default class MatchService {
   }
 
   async updateMachesInProgress(
-    teams: IUpdateMaches,
+    teamGoals: IUpdateMatchGoals,
     id:number,
   ):Promise<ServiceResponse<IMatch | null>> {
     const match = await this.matchModel.findById(id);
 
     if (!match) return { status: 'NOT_FOUND', data: { message: 'Match not found' } };
 
-    const updatedMatch = await this.matchModel.updateMachesInProgress(teams, id);
+    const updatedMatch = await this.matchModel.updateMachesInProgress(teamGoals, id);
 
     return { status: 'SUCCESSFUL', data: updatedMatch };
   }
