@@ -68,4 +68,13 @@ export default class MatchModel implements IMatchModel {
 
     return newMatch;
   }
+
+  async getFinalizedMatches():Promise<IMatch[]> {
+    const allMatches = await this.findAll();
+
+    const finalizedMatches = allMatches
+      .filter((match: IMatch) => match.inProgress === false);
+
+    return finalizedMatches;
+  }
 }
