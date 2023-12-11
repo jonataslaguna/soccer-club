@@ -9,4 +9,5 @@ export default interface IMatchModel {
   findById(id:number):Promise<IMatch | null>;
   updateMachesInProgress(teamGoals: IUpdateMatchGoals, id:number):Promise<IMatch | null>;
   createMatch(match: INewMatch):Promise<IMatch> ;
+  getAllHomeTeams(homeTeamId: number):Promise<IMatch[]>;
 }

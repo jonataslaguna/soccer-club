@@ -1,5 +1,4 @@
-export default interface ILeaderboard {
-  name: string;
+export default interface ILeaderboardMatches {
   totalPoints: number;
   totalGames: number;
   totalVictories: number;
@@ -8,5 +7,5 @@ export default interface ILeaderboard {
   goalsFavor: number;
   goalsOwn: number;
   goalsBalance: number;
-  efficiency: number;
+  efficiency: string;
 }
