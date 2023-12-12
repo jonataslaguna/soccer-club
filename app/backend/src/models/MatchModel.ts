@@ -27,14 +27,17 @@ export default class MatchModel implements IMatchModel {
     return matches;
   }
 
-  async getAllHomeTeams(homeTeamId: number): Promise<IMatch[]> {
+  async findAllTeams(teamId: number, isHomeTeam: boolean): Promise<IMatch[]> {
+    const whereCondition = isHomeTeam ? { homeTeamId: teamId } : { awayTeamId: teamId };
+
     const matches = await this.model.findAll({
-      where: { homeTeamId, inProgress: false },
+      where: { ...whereCondition, inProgress: false },
       include: [
         { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
         { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
       ],
     });
+
     return matches;
   }
 
