@@ -7,10 +7,16 @@ export default class LeaderboardController {
     private leaderboard = new Leaderboard(),
   ) { }
 
-  async getLeaderboard(req: Request, res: Response): Promise<Response> {
-    const isHomeTeam = req.path === '/home';
+  async getLeaderboardFiltered(req: Request, res: Response): Promise<Response> {
+    const isHomeTeam = req.path;
 
-    const { status, data } = await this.leaderboard.calculateLeaderboard(isHomeTeam);
+    const { status, data } = await this.leaderboard.getLeaderboardFiltered(isHomeTeam);
+
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
+
+  async getLeaderboardOverall(req: Request, res: Response): Promise<Response> {
+    const { status, data } = await this.leaderboard.getOverallLeaderboard();
 
     return res.status(mapStatusHTTP(status)).json(data);
   }

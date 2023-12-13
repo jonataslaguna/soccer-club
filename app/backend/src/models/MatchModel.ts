@@ -6,23 +6,24 @@ export default class MatchModel implements IMatchModel {
   private model = SequelizeMatch;
   private teamModel = SequelizeTeam;
 
+  private static includeTeamsAttributes(): object[] {
+    return [
+      { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
+      { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
+    ];
+  }
+
   async findAll(): Promise<IMatch[]> {
-    const matches = await this.model.findAll({
-      include: [
-        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
-        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
-      ],
-    });
+    const matches = await this.model.findAll(
+      { include: MatchModel.includeTeamsAttributes() },
+    );
     return matches;
   }
 
   async getMatchesInProgress(matchStatus: boolean): Promise<IMatch[]> {
     const matches = await this.model.findAll({
       where: { inProgress: matchStatus },
-      include: [
-        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
-        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
-      ],
+      include: MatchModel.includeTeamsAttributes(),
     });
     return matches;
   }
@@ -32,10 +33,7 @@ export default class MatchModel implements IMatchModel {
 
     const matches = await this.model.findAll({
       where: { ...whereCondition, inProgress: false },
-      include: [
-        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
-        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
-      ],
+      include: MatchModel.includeTeamsAttributes(),
     });
 
     return matches;
@@ -51,10 +49,7 @@ export default class MatchModel implements IMatchModel {
   async findById(id: number): Promise<IMatch | null> {
     const match = await this.model.findOne({
       where: { id },
-      include: [
-        { model: SequelizeTeam, as: 'homeTeam', attributes: ['teamName'] },
-        { model: SequelizeTeam, as: 'awayTeam', attributes: ['teamName'] },
-      ],
+      include: MatchModel.includeTeamsAttributes(),
     });
 
     return match;
