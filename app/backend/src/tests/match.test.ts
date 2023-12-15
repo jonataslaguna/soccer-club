@@ -169,7 +169,7 @@ describe('Matches Integration Tests', function() {
         sinon.stub(Validations, 'validateToken').resolves();
         sinon.stub(SequelizeMatch, 'update').resolves();
 
-        const { status, body } = await chai.request(app).patch('/matches/9999/finish').set('Authorization', token);
+        const { status, body } = await chai.request(app).patch('/matches/9/finish').set('Authorization', token);
 
         expect(status).to.equal(200);
         expect(body).to.deep.equal({message: "Finished"});
