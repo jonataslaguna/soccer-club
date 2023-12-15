@@ -147,4 +147,31 @@ describe('Matches Integration Tests', function() {
         expect(status).to.equal(404);
         expect(body).to.deep.equal({message: "Match not found"});
     });
+
+    it('Should update a match successfully', async function() {
+        const { correctInputUpdateMatch, token, matchInProgress, } = matchMocks;
+        sinon.stub(JWT, 'verify').returns(token);
+        sinon.stub(Validations, 'validateToken').resolves();
+        const findOnestub = sinon.stub(SequelizeMatch, 'findOne');
+        findOnestub.onFirstCall().resolves(matchInProgress as unknown as SequelizeMatch);
+        sinon.stub(SequelizeMatch, 'update').resolves();
+        findOnestub.onSecondCall().resolves(matchInProgress as unknown as SequelizeMatch);
+
+        const { status, body } = await chai.request(app).patch('/matches/1').set('Authorization', token).send(correctInputUpdateMatch);
+
+        expect(status).to.equal(200);
+        expect(body).to.deep.equal(matchInProgress);
+    });
+
+    it('Should be possible to finish a match with an id', async function() {
+        const { token } = matchMocks;
+        sinon.stub(JWT, 'verify').returns(token);
+        sinon.stub(Validations, 'validateToken').resolves();
+        sinon.stub(SequelizeMatch, 'update').resolves();
+
+        const { status, body } = await chai.request(app).patch('/matches/9999/finish').set('Authorization', token);
+
+        expect(status).to.equal(200);
+        expect(body).to.deep.equal({message: "Finished"});
+    });
 });
