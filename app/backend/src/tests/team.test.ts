@@ -18,7 +18,7 @@ describe('Teams Integration Tests', function() {
         sinon.restore();
       });
     it('Should return all teams', async function() {
-        sinon.stub(SequelizeTeam, 'findAll').resolves(teams.allTeams as any);
+        sinon.stub(SequelizeTeam, 'findAll').resolves(teams.allTeams as unknown as SequelizeTeam[]);
         
         const { status, body } = await chai.request(app).get('/teams');
         
@@ -27,7 +27,7 @@ describe('Teams Integration Tests', function() {
     });
 
     it('Should return a team by id', async function() {
-        sinon.stub(SequelizeTeam, 'findByPk').resolves(teams.allTeams[0] as any);
+        sinon.stub(SequelizeTeam, 'findByPk').resolves(teams.allTeams[0] as unknown as SequelizeTeam);
         
         const { status, body } = await chai.request(app).get('/teams/1');
         
