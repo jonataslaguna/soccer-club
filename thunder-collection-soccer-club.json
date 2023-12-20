@@ -1,0 +1,223 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Soccer Club",
+    "dateExported": "2023-12-20T20:07:47.640Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "0e840acc-e6f1-48f9-92a3-2666ce745917",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "List Teams",
+            "url": "http://localhost:3001/teams",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-12-04T18:04:53.661Z",
+            "modified": "2023-12-05T13:36:53.538Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c542823c-54ab-4242-9998-e08399e1bfb8",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Find Team By Id",
+            "url": "http://localhost:3001/teams/5",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-12-04T19:59:17.842Z",
+            "modified": "2023-12-04T20:19:05.753Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b86a4b8b-05a8-406e-899e-bdcdf089eeae",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Login",
+            "url": "http://localhost:3001/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-12-05T15:41:23.311Z",
+            "modified": "2023-12-05T18:17:24.114Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"user@user.com\",\n  \"password\": \"secret_user\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a42d11b4-8808-4aed-8e69-9fecfaee742f",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Role",
+            "url": "http://localhost:3001/login/role",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-12-05T20:43:16.366Z",
+            "modified": "2023-12-20T20:02:49.699Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMzEwMjUyNiwiZXhwIjoxNzAzOTY2NTI2fQ.Vk_AwPIl2AVw4V6ckj4qpRsO61okR-WkXgJ2wAHDVLc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "29a1f393-4bdf-4a6a-b504-3de952fcb402",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Matches",
+            "url": "http://localhost:3001/matches",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-12-06T13:44:22.424Z",
+            "modified": "2023-12-06T13:45:21.430Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMTg3MDI4MywiZXhwIjoxNzAyNzM0MjgzfQ.TgMeuYp88eT-S2dyZTztRqtUqZog37OEm9dli3Yv9Y0"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "60f5f6d9-a948-443d-820e-87cd62392a81",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Matches In Progress",
+            "url": "http://localhost:3001/matches?inProgress=true",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2023-12-06T15:37:31.431Z",
+            "modified": "2023-12-20T20:03:13.834Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "inProgress",
+                    "value": "true",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "4682eab1-8f0a-40f0-8d7f-dba8d50c3d00",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Finish Match",
+            "url": "http://localhost:3001/matches/43/finish",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2023-12-06T17:11:07.449Z",
+            "modified": "2023-12-20T20:03:27.466Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMzEwMjUyNiwiZXhwIjoxNzAzOTY2NTI2fQ.Vk_AwPIl2AVw4V6ckj4qpRsO61okR-WkXgJ2wAHDVLc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1a06fb46-30d1-4266-83a7-6a2ae04c54e4",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Updated Matches",
+            "url": "http://localhost:3001/matches/9",
+            "method": "PATCH",
+            "sortNum": 80000,
+            "created": "2023-12-06T18:21:13.070Z",
+            "modified": "2023-12-20T20:03:38.950Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMzEwMjUyNiwiZXhwIjoxNzAzOTY2NTI2fQ.Vk_AwPIl2AVw4V6ckj4qpRsO61okR-WkXgJ2wAHDVLc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"homeTeamGoals\": 8,\n  \"awayTeamGoals\": 11\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "16333a8c-1a23-42dc-8e3e-f6bf6dc8959b",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Create Match",
+            "url": "http://localhost:3001/matches",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2023-12-07T15:28:58.931Z",
+            "modified": "2023-12-20T20:03:50.624Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAdXNlci5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMzEwMjUyNiwiZXhwIjoxNzAzOTY2NTI2fQ.Vk_AwPIl2AVw4V6ckj4qpRsO61okR-WkXgJ2wAHDVLc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"homeTeamId\": 16,\n  \"awayTeamId\": 1, \n  \"homeTeamGoals\": 2,\n  \"awayTeamGoals\": 2\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6ff25864-da67-4667-9cd4-b101b24e1fa4",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Leaderboard Home",
+            "url": "http://localhost:3001/leaderboard/home",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-12-07T19:01:30.467Z",
+            "modified": "2023-12-12T14:35:15.119Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b749b30a-043b-4ed8-b2e0-6c31341bf660",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Leaderboard Away",
+            "url": "http://localhost:3001/leaderboard/away",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-12-12T14:35:58.438Z",
+            "modified": "2023-12-12T14:36:03.178Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9fb8dc1e-9bb7-4508-8b50-867eb160a238",
+            "colId": "d02ad3e8-75e3-4869-92b0-ac8c05b1ac83",
+            "containerId": "",
+            "name": "Leaderboard Overall",
+            "url": "http://localhost:3001/leaderboard",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-12-12T17:59:25.866Z",
+            "modified": "2023-12-12T17:59:37.190Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
