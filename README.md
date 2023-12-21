@@ -170,7 +170,7 @@ npm run compose:down
 
   ![matches](assets/matches.png)
 
-  Na página de partidas é possível escolher visializar: `Todos os Jogos`, `Em andamento`, e `Finalizado`.
+  Na página de partidas é possível escolher visualizar: `Todos os Jogos`, `Em andamento`, e `Finalizado`.
 
 </details>
 
