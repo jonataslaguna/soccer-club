@@ -161,7 +161,7 @@ npm run compose:down
   
   ![login](assets/login.png)
 
-  Caso queria efetuar o login utilize esses dados:
+  Caso queria efetuar o login utilize os dados abaixo:
 
   <strong>Login:</strong> user@user.com<br />
   <strong>Senha:</strong> secret_user
