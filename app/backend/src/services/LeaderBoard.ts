@@ -3,9 +3,9 @@ import { ServiceResponse } from '../types/ServiceResponse';
 import MatchModel from '../models/MatchModel';
 import { IMatchModel } from '../Interfaces/Match';
 import TeamModel from '../models/TeamModel';
-import LeaderBoardCalculator from '../utils/LeaderboardCalculator/LeaderboardCalculator';
-import SortLeaderboard from '../utils/LeaderboardCalculator/SortLeaderboard';
-import LeaderboardOverall from '../utils/LeaderboardCalculator/LeaderboardOverall';
+import LeaderBoardCalculator from '../utils/LeaderboardUtil/LeaderboardCalculator';
+import SortLeaderboard from '../utils/LeaderboardUtil/SortLeaderboard';
+import LeaderboardOverall from '../utils/LeaderboardUtil/LeaderboardOverall';
 
 export default class Leaderboard {
   constructor(
