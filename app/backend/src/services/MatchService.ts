@@ -50,10 +50,10 @@ export default class MatchService {
       };
     }
 
-    const findTeamHomeTeam = await this.teamModel.findById(homeTeamId);
-    const findTeamAwayTeam = await this.teamModel.findById(awayTeamId);
+    const findHomeTeam = await this.teamModel.findById(homeTeamId);
+    const findAwayTeam = await this.teamModel.findById(awayTeamId);
 
-    if (!findTeamHomeTeam || !findTeamAwayTeam) {
+    if (!findHomeTeam || !findAwayTeam) {
       return { status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
     }
 
