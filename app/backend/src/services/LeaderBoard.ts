@@ -18,7 +18,7 @@ export default class Leaderboard {
     const teamsStats = await Promise.all(teams.map(async (team) => {
       if (type === '/home' || type === '/away') {
         const teamType = type === '/home';
-        const matches = await this.getCalculateTeamMatchesStats(team.id, teamType);
+        const matches = await this.getTeamMatchesStats(team.id, teamType);
         return { name: team.teamName, ...matches };
       }
       const homeTeam = await this.getTeamMatchStatistics(team.id, true);
@@ -46,7 +46,7 @@ export default class Leaderboard {
     return LeaderBoardCalculator.reduceTeamMatchesStats(match, isHomeTeam);
   }
 
-  private async getCalculateTeamMatchesStats(
+  private async getTeamMatchesStats(
     teamId: number,
     isHomeTeam: boolean,
   ): Promise<ILeaderboardMatches> {
